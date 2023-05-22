@@ -40,5 +40,5 @@ class Transaction:
                 return f'{account_name} {account_number[0:4]} {account_number[4:6]}** **** {account_number[12:16]}'
 
         def amount(self):
-            return f'{self.transaction["transact"]["amount"]} {self.transaction["transact"]["currency"]["name"]}'
+            return f'{self.transaction["operationAmount"]["amount"]} {self.transaction["operationAmount"]["currency"]["name"]}'
 

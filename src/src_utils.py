@@ -1,7 +1,7 @@
 import os
 import json
 
-path_to_file = os.path.abspath('../data/')
+path_to_file = os.path.abspath('../hjk/')
 path_to_transaction = os.path.join(path_to_file, 'operations.json')
 
 

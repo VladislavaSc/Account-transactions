@@ -1,4 +1,5 @@
-import pytest
+import pytest as pytest
+from src.src_utils import last_five_transactions
 
 
 def last_five_transactions(fixture):

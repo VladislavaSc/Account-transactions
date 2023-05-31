@@ -2,25 +2,16 @@ import pytest as pytest
 from src.src_utils import last_five_transactions
 
 
-def last_five_transactions(fixture):
-    assert last_five_transactions(fixture) == [
-        {"id": 441945886,
-         "state": "EXECUTED",
-         "date": "2019-08-26T10:50:58.294041"},
-        {"id": 41428829,
-         "state": "EXECUTED",
-         "date": "2019-07-03T18:35:29.512364"},
-        {"id": 939719570,
-         "state": "EXECUTED",
-         "date": "2018-06-30T02:08:58.425572"},
-        {"id": 587085106,
-         "state": "EXECUTED",
-         "date": "2018-03-23T10:45:06.972075"},
-        {"id": 142264268,
-         "state": "EXECUTED",
-         "date": "2019-04-04T23:20:05.206878"}
-    ]
+@pytest.fixture
+def src_utils_fixture():
+    return [{"id": "1", "date": "01.01.2023", "state": "EXECUTED"},
+            {},
+            {"id": "2", "date": "01.03.2023", "state": "EXECUTED"},
+            {"id": "3", "date": "01.02.2023", "state": "EXECUTED"},
+            {"id": "4", "date": "01.05.2023", "state": "EXECUTED"}]
 
-
-def test_json_file():
-    load = test_transaction_json(load_json())
+def test_last_five_transactions(src_utils_fixture):
+    assert last_five_transactions(src_utils_fixture) == [{"id": "4", "date": "01.05.2023", "state": "EXECUTED"},
+                                                         {"id": "3", "date": "01.02.2023", "state": "EXECUTED"},
+                                                         {"id": "2", "date": "01.03.2023", "state": "EXECUTED"},
+                                                         {"id": "1", "date": "01.01.2023", "state": "EXECUTED"}]
